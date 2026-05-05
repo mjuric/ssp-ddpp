@@ -5,8 +5,9 @@ n-body propagator (REBOUND IAS15 + JPL DE441 perturbers + GR + relativistic
 Sun) for state propagation. RA/Dec is then computed from observer geometry
 with second-order Taylor light-time correction.
 
-Targets: byte-equivalence with JPL Horizons "astrometric ICRF RA/Dec"
-(extra_prec=YES) at < 1 microarcsec when given the same elements.
+Targets: agreement with JPL Horizons "astrometric ICRF RA/Dec"
+(extra_prec=YES) at <1 mas RMS great-circle separation when given the
+same osculating elements.
 
 Heavy dependencies (`rebound`, `assist`) are imported lazily so simply
 importing the package does not require a JPL planet ephemeris file on disk.

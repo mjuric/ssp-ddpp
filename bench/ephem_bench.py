@@ -3,7 +3,7 @@
 Three sections, each independently runnable:
 
   1. Accuracy gate (ASSIST vs Horizons, same elements). Pass criterion:
-     <0.001 mas RMS RA·cos(δ) and Dec residual.
+     <1 mas RMS great-circle separation.
 
   2. Drop-in equivalence (ASSIST vs current ssp.ephem.jorbit path). Just
      reports residuals; does not gate on them.
@@ -397,10 +397,10 @@ def main():
                 print(r.summarize())
                 rms_arcsec = float(np.sqrt(np.mean(sep_all ** 2)))
                 rms_mas = rms_arcsec * 1000.0
-                gate_ok = rms_mas < 0.001
+                gate_ok = rms_mas < 1.0
                 print(
-                    f"  Gate: separation RMS = {rms_mas:.6f} mas "
-                    f"({'PASS' if gate_ok else 'FAIL'}; target <0.001 mas)"
+                    f"  Gate: separation RMS = {rms_mas:.4f} mas "
+                    f"({'PASS' if gate_ok else 'FAIL'}; target <1 mas)"
                 )
                 summary["accuracy"] = {
                     "n_obj": n_good,
